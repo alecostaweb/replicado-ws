@@ -1,0 +1,24 @@
+{
+	"name" : "Uspdev/replicado-ws",
+	"authors" : [{
+			"name" : "André Canale Garcia",
+			"email" : "acgarcia@sc.usp.br"
+		},
+		{
+			"name" : "Masaki Kawabata Neto",
+			"email" : "kawabata@usp.br"
+		}
+	],
+	"require" : {
+		"ext-pdo" : "*",
+		"uspdev/replicado": "dev-master",
+		"mikecao/flight": "dev-master"
+	},
+	"extra" : {},
+	"autoload" : {
+		"psr-4" : {
+			"Uspdev\\Replicado_ws\\" : "src"
+		}
+	},
+	"minimum-stability": "dev"
+}

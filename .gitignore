@@ -1,0 +1,11 @@
+.buildpath
+.project
+.settings
+
+config/config.php
+/vendor/
+
+# pode colocar logs nessa pasta
+/local/
+
+composer.lock
