@@ -4,11 +4,11 @@ Web Service para acesso aos dados do Replicado USP
 
 ## Configuração
 
-* Renomear o arquivo config/config.sample.php para config/config.php
+* Copiar o arquivo config/config.sample.php para config/config.php
 * Inserir no arquivo config.php 
     * Domínio de acesso ao Web Service 
-    * Credenciais para acesso a base de dados de replicacao da USP
-* Configurar o Apache para apontar para a pasta www/
+    * Credenciais para acesso à base de dados de replicacao da USP
+* Configurar o Apache para apontar para a pasta ```www/```
 * Instalar as dependências do composer
     * ```composer update```
 
@@ -22,9 +22,9 @@ php test/require_auth.php
 
 ## Utilização
 
-Acessar URL do serviço desejado com os parâmetros necessários. O retorno dos dados será em JSON .
+Acessar URL do serviço desejado com os parâmetros necessários. O retorno dos dados será em JSON.
 
-Exemplos
+### Exemplo 1
 
 Acessando o endereço ```http://{dominio}/``` pelo navegador, vai retornar
 
@@ -37,6 +37,8 @@ Acessando o endereço ```http://{dominio}/``` pelo navegador, vai retornar
 }
 ```
 
+### Exemplo 2
+
 Para mostrar os programas de Pós-Graduação da unidade devemos acessar:
 
 ```
@@ -45,7 +47,7 @@ http://{dominio}/posgraduacao/programas/
 
 ## Consumidores
 
-Há alguns exemplos de aplicações consumindo dados da API em <code>/consumers</code>.
+Há alguns exemplos de aplicações consumindo dados da API em <code>/consumer</code>.
 
 ## Informações disponíveis
 
