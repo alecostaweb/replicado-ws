@@ -12,9 +12,12 @@ Web Service para acesso aos dados do Replicado USP
 * Instalar as dependências do composer
     * ```composer update```
 
+A API faz uso do uspdev/cache. Essa biblioteca de cache funciona com o memcached e ele precisa ser instalado e configurado. Para mais informações consulte http://github.com/uspdev/cache.
+
 ## Testes
 
 Há alguns testes simples de verificação do funcionamento. Longe de ser unit teste ou algo assim mas se rodar direitinho quer dizer que as configurações gerais estão corretas.
+
 ```bash
 php test/not_found.php
 php test/require_auth.php

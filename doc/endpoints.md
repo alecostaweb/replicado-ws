@@ -1,14 +1,14 @@
 ## Endpoints
 
 Este documento foi gerado automaticamente a partir da documentação de cada endpoint.\
-Data da geração: 17/09/2019 08:45:18
+Data da geração: 17/09/2019 11:03:45
 
 ### /posgraduacao
 
   * /verifica/{codpes}
     * descricao: verifica se aluno (codpes) tem matrícula ativa na pós-graduação da unidade
   * /ativos/
-    * descricao: retorna todos os alunos de pós-graduação ativos na unicade
+    * descricao: retorna todos os alunos de pós-graduação ativos na unidade
   * /programas/{codcur}
     * descricao: retorna todos os programas de pós-graduação da unidade ou quando informado o código do curso/programa retorna somente os dados do programa solicitado
   * /orientadores/{codare}

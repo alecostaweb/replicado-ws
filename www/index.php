@@ -6,6 +6,9 @@ require_once '../vendor/autoload.php';
 require_once '../app/bootstrap.php';
 
 use Uspdev\Replicado_ws\Auth;
+use Uspdev\Cache\Cache;
+
+$c = new Cache();
 
 // vamos colocar as rotas principais aqui.
 

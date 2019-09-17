@@ -12,7 +12,8 @@
 	"require" : {
 		"ext-pdo" : "*",
 		"uspdev/replicado": "dev-master",
-		"mikecao/flight": "dev-master"
+		"mikecao/flight": "dev-master",
+		"uspdev/cache": "dev-master"
 	},
 	"extra" : {},
 	"autoload" : {

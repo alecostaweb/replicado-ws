@@ -1,32 +1,42 @@
 <?php
 
-use Uspdev\Replicado_ws\Auth;
 use Uspdev\Replicado\Posgraduacao;
+use Uspdev\Replicado_ws\Auth;
 
 Flight::route('/posgraduacao', function () {
     global $help;
-
     Flight::jsonf($help);
 });
 
-$help['verifica']['url'] = DOMINIO . '/posgraduacao/verifica/{codpes}';
-$help['verifica']['descricao'] = 'verifica se aluno (codpes) tem matrícula ativa na pós-graduação da unidade';
+$help['verifica'] = [
+    'url' => DOMINIO . '/posgraduacao/verifica/{codpes}',
+    'descricao' => 'verifica se aluno (codpes) tem matrícula ativa na pós-graduação da unidade',
+];
 Flight::route('/posgraduacao/verifica/@codpes:[0-9]+', function ($codpes) {
     Auth::auth();
-    Flight::json(Posgraduacao::verifica($codpes, UNIDADE));
+    $res = Posgraduacao::verifica($codpes, UNIDADE);
+    Flight::json($res);
 });
 
-$help['ativos']['url'] = DOMINIO . '/posgraduacao/ativos/';
-$help['ativos']['descricao'] = 'retorna todos os alunos de pós-graduação ativos na unicade';
+$help['ativos'] = [
+    'url' => DOMINIO . '/posgraduacao/ativos/',
+    'descricao' => 'retorna todos os alunos de pós-graduação ativos na unidade',
+];
 Flight::route('/posgraduacao/ativos', function () {
+    global $c;
     Auth::auth();
-    Flight::json(Posgraduacao::ativos(UNIDADE));
+    $res = $c->getCached('\Uspdev\Replicado\Posgraduacao::ativos', UNIDADE);
+    Flight::json($res);
 });
 
-$help['programas']['url'] = DOMINIO . '/posgraduacao/programas/{codcur}';
-$help['programas']['descricao'] = 'retorna todos os programas de pós-graduação da unidade ou quando informado o código do curso/programa retorna somente os dados do programa solicitado';
+$help['programas'] = [
+    'url' => DOMINIO . '/posgraduacao/programas/{codcur}',
+    'descricao' => 'retorna todos os programas de pós-graduação da unidade ou quando informado o código do curso/programa retorna somente os dados do programa solicitado',
+];
 Flight::route('/posgraduacao/programas(/@codcur:[0-9]+)', function ($codcur) {
-    Flight::json(Posgraduacao::programas(UNIDADE, $codcur));
+    global $c;
+    $res = Posgraduacao::programas(UNIDADE, $codcur);
+    Flight::json($res);
 });
 
 // em uso no site da PG do SET, 9/2019
@@ -35,7 +45,9 @@ $help['orientadores'] = [
     'descricao' => 'retorna os orientadores credenciados na área de concentração (codare) do programa de pós graduação correspondente',
 ];
 Flight::route('/posgraduacao/orientadores/@codare:[0-9]+', function ($codare) {
-    Flight::json(Posgraduacao::orientadores($codare));
+    global $c;
+    $res = $c->getCached('\Uspdev\Replicado\Posgraduacao::orientadores', $codare);
+    Flight::json($res);
 });
 
 // em uso no site da PG do SET, 9/2019
@@ -45,10 +57,13 @@ $help['catalogodisciplinas'] = [
 ];
 Flight::route('/posgraduacao/catalogodisciplinas/@codare:[0-9]+', function ($codare) {
     $l = Flight::request()->query['l'];
+    global $c;
     if ($l == 'completo') {
         // como o replicado não tem essa consulta vamos usar uma classe própria para isso
-        Flight::json(\Uspdev\Replicado_ws\Model\Posgraduacao::catalogoDisciplinas($codare));
+        $res = $c->getCached('\Uspdev\Replicado_ws\Model\Posgraduacao::catalogoDisciplinas', $codare);
     } else {
-        Flight::json(Posgraduacao::catalogoDisciplinas($codare));
+        $res = $c->getCached('\Uspdev\Replicado\Posgraduacao::catalogoDisciplinas', $codare);
     }
+    Flight::json($res);
+
 });
