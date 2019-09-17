@@ -1,0 +1,2 @@
+#!/bin/bash
+memcstat --servers=localhost 11211|grep "version\|get_hits\|curr_connections\|get_misses\|curr_items"
