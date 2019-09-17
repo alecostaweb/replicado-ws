@@ -54,3 +54,5 @@ Há alguns exemplos de aplicações consumindo dados da API em <code>/consumer</
 Em princípio estarão disponíveis os métodos do uspdev/replicado mas nem todos estão implementados.
 
 Navegando pela API ele mostrará os endpoints disponíveis com a respectiva documentação.
+
+[Lista de endpoints disponíveis](doc/endpoints.md)
