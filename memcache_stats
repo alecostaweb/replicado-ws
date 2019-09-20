@@ -1,2 +1,5 @@
 #!/bin/bash
+# No linux é necessário ter o pacote abaixo instalado
+# apt install libmemcached-tools 
+
 memcstat --servers=localhost 11211|grep "version\|get_hits\|curr_connections\|get_misses\|curr_items"
