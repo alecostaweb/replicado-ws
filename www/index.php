@@ -38,4 +38,9 @@ if (file_exists('../app/' . $app . '.php')) {
     require_once '../app/' . $app . '.php';
 } 
 
+// incluindo rotas locais
+if (defined('ROTAS_LOCAIS') and file_exists(ROTAS_LOCAIS)) {
+    include_once ROTAS_LOCAIS;
+}
+
 Flight::start();
