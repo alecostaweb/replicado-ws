@@ -16,6 +16,7 @@ $c = new Cache();
 Flight::route('/', function () {
     $api['posgraduacao_url'] = DOMINIO . '/posgraduacao';
     $api['pessoa_url'] = DOMINIO . '/pessoa';
+    $api['bempatrimoniado_url'] = DOMINIO . '/bempatrimoniado';
     $api['login_url'] = DOMINIO . '/login';
     $api['logout_url'] = DOMINIO . '/logout';
     Flight::jsonf($api);
