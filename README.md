@@ -59,3 +59,11 @@ Em princípio estarão disponíveis os métodos do uspdev/replicado mas nem todo
 Navegando pela API ele mostrará os endpoints disponíveis com a respectiva documentação.
 
 [Lista de endpoints disponíveis](doc/endpoints.md)
+
+## Contribuindo nesse projeto
+
+Ao inserir um novo endpoint ou modificar alguma coisa é importante atentar ao ```$help``` do endpoint. Essa documentação é exibida para o consumidor e é usada para gerar o arquivo ```doc/endpoints.md```. 
+
+Para atualizar esse arquivo rode ```php doc-generator.php``` que ele irá coletar a documentação de fato exibida considerando o config.php local.
+
+Antes de mexer no código abra uma issue e discuta com os mantenedores. Só depois faça um pull request seguindo o modelo fork->branch_da_issue->pull request.
