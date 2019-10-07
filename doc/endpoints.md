@@ -1,7 +1,7 @@
 ## Endpoints
 
 Este documento foi gerado automaticamente a partir da documentação de cada endpoint.\
-Data da geração: 17/09/2019 11:03:45
+Data da geração: 07/10/2019 11:46:07
 
 ### /posgraduacao
 
@@ -28,4 +28,9 @@ Data da geração: 17/09/2019 11:03:45
     * descricao: retorna todos os funcionários ativos na unidade
   * /estagiarios
     * descricao: retorna todos os estagiários ativos na unidade
+
+### /bempatrimoniado
+
+  * /dump/{numpat}
+    * descricao: retorna todos campos da tabela bempatrimoniado
 

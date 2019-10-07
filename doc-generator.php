@@ -1,10 +1,11 @@
 <?php
 require_once __DIR__ . '/config/config.php';
 
-// endpoints a serem testados
+// endpoints a serem testados. Deve prgar automaticamente de outro lugar no futuro.
 $endpoints = [
     '/posgraduacao',
     '/pessoa',
+    '/bempatrimoniado'
 ];
 
 echo 'Gerador ed documentação dos endpoints. Deve ser rodado toda vez que os endpoints são modificados!'.PHP_EOL;
@@ -24,8 +25,6 @@ foreach ($endpoints as $endpoint) {
     foreach ($arr as $key => $val) {
         foreach ($val as $k => $v) {
             if ($k == 'url') {
-                // $doc .= '  * '.$k .': '. $v . PHP_EOL;
-                // $doc .= '  * '.$k .': '. str_replace($endpoint,'',$v) . PHP_EOL;
                 // vamos limpar parte da URl que é repetido
                 $doc .= '  * ' . str_replace(DOMINIO . $endpoint, '', $v) . PHP_EOL;
             } else {
