@@ -1,7 +1,7 @@
 ## Endpoints
 
 Este documento foi gerado automaticamente a partir da documentação de cada endpoint.\
-Data da geração: 07/10/2019 11:46:07
+Data da geração: 08/10/2019 08:02:37
 
 ### /posgraduacao
 
@@ -15,6 +15,8 @@ Data da geração: 07/10/2019 11:46:07
     * descricao: retorna os orientadores credenciados na área de concentração (codare) do programa de pós graduação correspondente
   * /catalogodisciplinas/{codare}(?l=completo)
     * descricao: retorna o catálogo das disciplinas pertencentes à área de concentração
+  * /disciplinas_oferecimento/{codare}
+    * descricao: retorna as disciplinas em oferecimento na área de concentração (codare) do programa de pós graduação correspondente
 
 ### /pessoa
 
@@ -28,7 +30,7 @@ Data da geração: 07/10/2019 11:46:07
     * descricao: retorna todos os funcionários ativos na unidade
   * /estagiarios
     * descricao: retorna todos os estagiários ativos na unidade
-
+  
 ### /bempatrimoniado
 
   * /dump/{numpat}

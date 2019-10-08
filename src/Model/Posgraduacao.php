@@ -21,4 +21,17 @@ class Posgraduacao {
         }
         return $catalogo;
     }
+
+    // o uspdev/replicado pega somente os dados básicos da disciplina no método disciplinasOferecimento.
+    // vamos pegar todos os dados aqui recursivamente
+    public static function disciplinasOferecimento($codare) {
+        $disciplinas = UspdevPosgraduacao::disciplinasOferecimento($codare);
+        for ($i=0;$i<count($disciplinas); $i++) {
+            $sgldis = $disciplinas[$i]['sgldis'];
+            $numofe = $disciplinas[$i]['numofe'];
+            $oferecimento = UspdevPosgraduacao::oferecimento($sgldis, $numofe);
+            $disciplinas[$i] = array_merge($disciplinas[$i], $oferecimento);
+        }
+        return $disciplinas;
+    }
 }

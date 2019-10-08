@@ -22,8 +22,9 @@ $sort = ''; // default: nomdis - que vem do endpoint. Coloque o nome do campo qu
 $offset = 100; // offset ao rolar para cima por conta do menu fixo utilizado no template. Sem menu fixo o offset é 0
 
 // producao ou testes
-$endpoint = 'http://servidor/replicado/posgraduacao/catalogodisciplinas/' . $codare . '?l=completo';
+//$endpoint = 'http://servidor/replicado/posgraduacao/catalogodisciplinas/' . $codare . '?l=completo';
 //$endpoint = 'http://localhost/git/uspdev/replicado-ws/www/posgraduacao/catalogodisciplinas/'.$codare.'?l=completo';
+$endpoint = 'http://143.107.233.112/git/uspdev/replicado-ws/www/posgraduacao/catalogodisciplinas/'.$codare.'?l=completo';
 
 // ------------------------------------------------
 $json = file_get_contents($endpoint);
