@@ -67,3 +67,21 @@ Flight::route('/posgraduacao/catalogodisciplinas/@codare:[0-9]+', function ($cod
     Flight::json($res);
 
 });
+
+// em uso no site da PG do SET, 9/2019
+$help['disciplinasativas'] = [
+    'url' => DOMINIO . '/posgraduacao/disciplinas_oferecimento/{codare}',
+    'descricao' => 'retorna as disciplinas em oferecimento na área de concentração (codare) do programa de pós graduação correspondente',
+];
+Flight::route('/posgraduacao/disciplinas_oferecimento/@codare:[0-9]+', function ($codare) {
+    $l = Flight::request()->query['l'];
+    global $c;
+    if ($l == 'completo') {
+        // como o replicado não tem essa consulta vamos usar uma classe própria para isso
+        $res = $c->getCached('\Uspdev\Replicado_ws\Model\Posgraduacao::disciplinasOferecimento', $codare);
+    } else {
+        $res = $c->getCached('\Uspdev\Replicado\Posgraduacao::disciplinasOferecimento', $codare);
+
+    }
+    Flight::json($res);
+});
