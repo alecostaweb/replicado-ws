@@ -1,6 +1,6 @@
 <!-- O jquery é necessário para testar aqui mas dentro do WP ele já está carregado -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+<br><br><br><br>
 
 <?php
 /* este código permite consumir as disciplinas em oferecimento de determinada área de concentração da pós
@@ -22,10 +22,10 @@ $sort = ''; // default: nomdis - que vem do endpoint. Coloque o nome do campo qu
 $offset = 100; // offset ao rolar para cima por conta do menu fixo utilizado no template. Sem menu fixo o offset é 0
 
 // producao ou testes
-//$endpoint = 'http://servidor/replicado/posgraduacao/catalogodisciplinas/' . $codare . '?l=completo';
-$endpoint = 'http://143.107.233.112/git/uspdev/replicado-ws/www/posgraduacao/disciplinas_oferecimento/'.$codare.'?l=completo';
+$endpoint = 'http://servidor/replicado/posgraduacao/catalogodisciplinas/' . $codare . '?l=completo';
 
 // ------------------------------------------------
+
 $json = file_get_contents($endpoint);
 $resource = json_decode($json, true);
 
@@ -57,12 +57,11 @@ function horariolocal($espacoturma) {
 }
 
 ?>
-
 <div class="oferecimentos">
-    <div class="count">Foram encontradas <?php echo $num_rows ?> disciplinas.</div>
+    <div class="count">Disciplinas em oferecimento (<?php echo $num_rows ?> disciplinas encontradas)</div>
     <ul>
         <?php foreach ($resource as $row) {?>
-        <li id="<?php echo $row['sgldis'] ?>">
+        <li id="oferecimentos<?php echo $row['sgldis'] ?>">
             <div>
                 <a href class="detalhes_btn"><?php echo $row['sgldis'] ?> - <?php echo $row['nomdis'] ?></a>
             </div>
@@ -117,19 +116,20 @@ $(document).ready(function() {
     // ao clicar na disciplina ele esconde os detalhes de outra disciplina e
     // mostra os detalhes da qual clicou. Clicando novamente ele esconde tudo.
     var offset = <?php echo $offset; ?>;
-    $(".detalhes_btn").click(function(e) {
+    $(".oferecimentos .detalhes_btn").click(function(e) {
         e.preventDefault();
-        var detalhes = $(this).parent().parent().find(".detalhes_div");
+        var app = $(this).parent().parent();
+        var detalhes = app.find(".detalhes_div");
         var visible = detalhes.is(":visible");
 
         $(".detalhes_div").hide();
 
         if (!visible) {
-            detalhes.slideDown();
-            location.hash = "#" + $(this).parent().parent().attr("id");
+            detalhes.slideDown(100);
+            location.hash = "#" + app.attr("id");
             $([document.documentElement, document.body]).animate({
-                scrollTop: $(location.hash).offset().top - offset
-            }, 500);
+                scrollTop: $("#" + app.attr("id")).offset().top - offset
+            }, 100);
         }
     });
 });

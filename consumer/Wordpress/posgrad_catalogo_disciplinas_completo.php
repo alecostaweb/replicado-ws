@@ -1,6 +1,6 @@
 <!-- O jquery é necessário para testar aqui mas dentro do WP ele já está carregado -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+<br><br><br><br>
 
 <?php
 /* este código permite consumir o catálogo de disciplinas de determinada área de concentração da pós
@@ -22,9 +22,7 @@ $sort = ''; // default: nomdis - que vem do endpoint. Coloque o nome do campo qu
 $offset = 100; // offset ao rolar para cima por conta do menu fixo utilizado no template. Sem menu fixo o offset é 0
 
 // producao ou testes
-//$endpoint = 'http://servidor/replicado/posgraduacao/catalogodisciplinas/' . $codare . '?l=completo';
-//$endpoint = 'http://localhost/git/uspdev/replicado-ws/www/posgraduacao/catalogodisciplinas/'.$codare.'?l=completo';
-$endpoint = 'http://143.107.233.112/git/uspdev/replicado-ws/www/posgraduacao/catalogodisciplinas/'.$codare.'?l=completo';
+$endpoint = 'http://servidor/replicado/posgraduacao/catalogodisciplinas/' . $codare . '?l=completo';
 
 // ------------------------------------------------
 $json = file_get_contents($endpoint);
@@ -39,7 +37,6 @@ if ($sort) {
 
 $num_rows = count($resource);
 ?>
-
 <div class="catalogo_disciplinas">
     <div class="count">Foram encontradas <?php echo $num_rows ?> disciplinas.</div>
     <ul>
@@ -92,19 +89,20 @@ $(document).ready(function() {
     // ao clicar na disciplina ele esconde os detalhes de outra disciplina e
     // mostra os detalhes da qual clicou. Clicando novamente ele esconde tudo.
     var offset = <?php echo $offset; ?>;
-    $(".detalhes_btn").click(function(e) {
+    $(".catalogo_disciplinas .detalhes_btn").click(function(e) {
         e.preventDefault();
-        var detalhes = $(this).parent().parent().find(".detalhes_div");
+        var app = $(this).parent().parent();
+        var detalhes = app.find(".detalhes_div");
         var visible = detalhes.is(":visible");
 
         $(".detalhes_div").hide();
 
         if (!visible) {
-            detalhes.slideDown();
-            location.hash = "#" + $(this).parent().parent().attr("id");
+            detalhes.slideDown(100);
+            location.hash = "#" + app.attr("id");
             $([document.documentElement, document.body]).animate({
-                scrollTop: $(location.hash).offset().top - offset
-            }, 500);
+                scrollTop: $("#" + app.attr("id")).offset().top - offset
+            }, 100);
         }
     });
 });
