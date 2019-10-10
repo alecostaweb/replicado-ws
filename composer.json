@@ -18,7 +18,7 @@
 	"extra" : {},
 	"autoload" : {
 		"psr-4" : {
-			"Uspdev\\Replicado_ws\\" : "src"
+			"uspdev\\replicado_ws\\" : "src"
 		}
 	},
 	"minimum-stability": "dev"
