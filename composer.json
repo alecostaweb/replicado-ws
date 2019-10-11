@@ -1,5 +1,5 @@
 {
-	"name" : "Uspdev/replicado-ws",
+	"name" : "uspdev/replicado-ws",
 	"authors" : [{
 			"name" : "André Canale Garcia",
 			"email" : "acgarcia@sc.usp.br"
@@ -18,7 +18,7 @@
 	"extra" : {},
 	"autoload" : {
 		"psr-4" : {
-			"uspdev\\replicado_ws\\" : "src"
+			"Uspdev\\Replicado_ws\\" : "src"
 		}
 	},
 	"minimum-stability": "dev"
