@@ -1,7 +1,7 @@
 ## Endpoints
 
 Este documento foi gerado automaticamente a partir da documentação de cada endpoint.\
-Data da geração: 14/10/2019 04:59:49
+Data da geração: 15/10/2019 04:38:03
 
 ### /posgraduacao
 
@@ -19,6 +19,8 @@ Data da geração: 14/10/2019 04:59:49
     * descricao: retorna as disciplinas em oferecimento na área de concentração (codare) do programa de pós graduação correspondente
   * /areasProgramas/{codcur}
     * descricao: retorna áreas de concentração (codare) do programa de pós-graduação correspondente (codcur)
+  * /alunosPrograma/{codcur}
+    * descricao: retorna os alunos ativos das áreas de concentração (codare) do programa de pós-graduação correspondente (codcur)
 
 ### /pessoa
 

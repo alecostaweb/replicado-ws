@@ -95,3 +95,13 @@ Flight::route('/posgraduacao/areasProgramas/@codcur:[0-9]+', function ($codcur) 
     $res = Posgraduacao::areasProgramas(UNIDADE, $codcur);
     Flight::json($res);
 });
+
+// igc
+$help['alunosPrograma'] = [
+    'url' => DOMINIO . '/posgraduacao/alunosPrograma/{codcur}',
+    'descricao' => 'retorna os alunos ativos das áreas de concentração (codare) do programa de pós-graduação correspondente (codcur)',
+];
+Flight::route('/posgraduacao/alunosPrograma/@codcur:[0-9]+', function ($codcur) {
+    $res = Posgraduacao::alunosPrograma(UNIDADE, $codcur);
+    Flight::json($res);
+});
