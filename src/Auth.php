@@ -59,4 +59,26 @@ class Auth
         header('WWW-Authenticate: Basic realm="use this hash key to encode"');
         die('logout');
     }
+
+    // Implementa controle de acesso por IP
+    // Se definido IP_ACCESS_LIST, usará essa lista de ip/prefixo para
+    // autorizar o acesso a todos os endpoints
+    // Para desativar não defina a constante IP_ACCESS_LIST
+    public static function ip_control()
+    {
+        if (defined('IP_ACCESS_LIST')) {
+            foreach (IP_ACCESS_LIST as $ip_list) {
+                // https://stackoverflow.com/questions/2869893/block-specific-ip-block-from-my-website-in-php
+                $network = ip2long($ip_list[0]);
+                $prefix = $ip_list[1];
+                $ip = ip2long($_SERVER['REMOTE_ADDR']);
+
+                if ($network >> (32 - $prefix) == $ip >> (32 - $prefix)) {
+                    return true;
+                }
+            }
+            \Flight::forbidden();
+        }
+        return true;
+    }
 }
