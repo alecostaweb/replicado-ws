@@ -22,6 +22,11 @@ Flight::route('/', function () {
     Flight::jsonf($api);
 });
 
+Flight::route('*', function() {
+    Auth::ip_control();
+    return true;
+});
+
 Flight::route('/login', function () {
     Auth::login();
 });

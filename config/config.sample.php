@@ -18,7 +18,6 @@ define("DOMINIO", "http://dominio/caminho");
 // se for usar rotas locais tem de definir aqui
 //define('ROTAS_LOCAIS', DIR . '/local/rotas/rota_local.php');
 
-
 // vamos deixar generico para qualquer unidade poder usar
 define('UNIDADE', 18);
 
@@ -37,3 +36,15 @@ $users = [
     'andre' => md5('andre'),
     'aplicacao' => md5('senha_da_aplicacao'),
 ];
+
+// Controle de acesso por IP
+// Permite que limitemos o acesso aos endpoints com base no IP do cliente
+// se estiver definido IP_ACCESS_LIST, vai realizar controle de acesso
+// e negar tudo que não estiver na lista.
+// Se IP_ACCESS_LIST não estiver definido, o acesso por IP não é implementado
+// e os endpoints estarão liberados para qualquer IP solicitante
+define ('IP_ACCESS_LIST', array(
+    ['182.168.0.0','24'], // libera sua rede privada
+    ['143.107.0.0','16'], // libera qualquer endereço da USP
+    ['10.233.0.10','32'], // libera um IP específico
+));
