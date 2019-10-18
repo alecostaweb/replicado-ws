@@ -4,9 +4,18 @@
  * Retorna os alunos do programa de pós-graduação (codcur) dentro de suas áreas de atuação (codare)
  */
 
-$codcur = 44005;
+$codcur = filter_input(INPUT_GET, 'codcur', FILTER_VALIDATE_INT);
+//$codcur = 44005;
 define("DOMINIO", "http://dev.igc.usp.br/replicado-ws/www"); 
 
+// obtém dados do programa
+$endpoint = DOMINIO . '/posgraduacao/programas/' . $codcur;
+$json = file_get_contents($endpoint);
+$programa = json_decode($json, true);
+?>
+<h2><?php echo $programa[0]['nomcur']; ?></h2>
+
+<?php
 $endpoint = DOMINIO . '/posgraduacao/areasProgramas/' . $codcur; 
 $json = file_get_contents($endpoint);
 $areas = json_decode($json, true);
@@ -23,7 +32,7 @@ foreach ($areas[$codcur] as $area){
 
     <div class="alunos_programa">
         <div><h3>Área <?php echo "$codare - $nomare" ?></h3></div>
-        <table class="table">
+        <table class="table" style="table-layout:auto;">
             <tr>
                 <th>Nível</th>
                 <th>Nome</th>

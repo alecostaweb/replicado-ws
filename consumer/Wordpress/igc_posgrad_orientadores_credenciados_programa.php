@@ -4,9 +4,18 @@
  * Retorna os orientadores do programa de pós-graduação (codcur) dentro de suas áreas de atuação (codare)
  */
 
-$codcur = 44005;
+$codcur = filter_input(INPUT_GET, 'codcur', FILTER_VALIDATE_INT);
+//$codcur = 44005;
 define("DOMINIO", "http://dev.igc.usp.br/replicado-ws/www"); 
 
+// obtém dados do programa
+$endpoint = DOMINIO . '/posgraduacao/programas/' . $codcur;
+$json = file_get_contents($endpoint);
+$programa = json_decode($json, true);
+?>
+<h2><?php echo $programa[0]['nomcur']; ?></h2>
+
+<?php
 $endpoint = DOMINIO . '/posgraduacao/areasProgramas/' . $codcur; 
 $json = file_get_contents($endpoint);
 $areas = json_decode($json, true);
@@ -24,7 +33,7 @@ foreach ($areas[$codcur] as $area){
 
     <div class="orientadores_credenciados">
         <div><h3>Área <?php echo "$codare - $nomare" ?></h3></div>
-        <table class="table">
+        <table class="table" style="table-layout:auto;">
             <tr>
                 <th>Nome</th>
                 <th>Nível</th>
@@ -33,8 +42,8 @@ foreach ($areas[$codcur] as $area){
             <?php foreach ($resource as $row) { ?>
             <tr>
                 <td><?php echo  $row['nompes'] ?></td>
-                <td><?php echo  $row['nivare'] ?></td>
-                <td><?php echo  date('d/m/Y', strtotime($row['dtavalfim'])) ?></td>
+                <td class="orientador_nivel"><?php echo  $row['nivare'] ?></td>
+                <td class="orientador_validade"><?php echo  date('d/m/Y', strtotime($row['dtavalfim'])) ?></td>
             </tr>
             <?php } ?>
         </table>
@@ -42,3 +51,10 @@ foreach ($areas[$codcur] as $area){
 <?php
 }
 ?>
+
+<style>
+    
+    .orientador_nivel, .orientador_validade {
+        text-align: center;
+    }
+</style>
