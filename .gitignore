@@ -3,6 +3,7 @@
 .settings
 
 config/config.php
+consumer/credentials.php
 /vendor/
 
 # pode colocar logs nessa pasta

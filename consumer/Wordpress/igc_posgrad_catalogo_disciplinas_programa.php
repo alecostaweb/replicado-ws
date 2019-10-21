@@ -1,5 +1,10 @@
 <!-- O jquery é necessário para testar aqui mas dentro do WP ele já está carregado -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<?php
+// vamos carregar DOMINIO, $codcur
+require_once '../credentials.php';
+?>
+
 
 <?php
 /* este código permite consumir o catálogo de disciplinas de determinada área de concentração da pós
@@ -16,16 +21,21 @@
  * 13/9/2019
  */
 
-$codcur = filter_input(INPUT_GET, 'codcur', FILTER_VALIDATE_INT);
+//$codcur = filter_input(INPUT_GET, 'codcur', FILTER_VALIDATE_INT);
 //$codcur = 44005;
-define("DOMINIO", "http://dev.igc.usp.br/replicado-ws/www"); 
+//define("DOMINIO", "http://dev.igc.usp.br/replicado-ws/www"); 
 
 $sort = ''; // default: nomdis - que vem do endpoint. Coloque o nome do campo que quiser ordenar. ex. sgldis
 $offset = 100; // offset ao rolar para cima por conta do menu fixo utilizado no template. Sem menu fixo o offset é 0
 
-// obtém dados do programa
+// ---------------------------------
+
 $endpoint = DOMINIO . '/posgraduacao/programas/' . $codcur;
-$json = file_get_contents($endpoint);
+
+if (empty($json = file_get_contents($endpoint))) {
+    echo 'Erro ao ler ' . DOMINIO; exit;
+}
+
 $programa = json_decode($json, true);
 ?>
 
@@ -58,23 +68,22 @@ foreach ($areas[$codcur] as $area){
     <div class="catalogo_disciplinas">
         <h3><?php echo $nomare; ?></h3>
 
-            <?php foreach ($resource as $row) {?>
-            <div class="disciplina" id="<?php echo $row['sgldis'] ?>" style="content: none;">
-                <div>
-                    <a href class="detalhes_btn"><?php echo $row['sgldis'] ?> - <?php echo $row['nomdis'] ?></a>
-                </div>
-                <div class="detalhes_div" style="display:none;">
-                    <div><b>Créditos </b> <br><?php echo $row['numcretotdis'] ?></div>
-                    <div><b>Objetivos</b><br><?php echo nl2br($row['objdis']) ?></div>
-                    <div><b>Justificativa</b><br><?php echo nl2br($row['jusdis']) ?></div>
-                    <div><b>Conteúdo</b><br><?php echo nl2br($row['ctudis']) ?></div>
-                    <div><b>Forma de avaliação</b><br><?php echo $row['tipavldis'] ?></div>
-                    <div><b>Observação</b><br><?php echo nl2br($row['obsdis']) ?></div>
-                    <div><b>Bibliografia</b><br><?php echo nl2br($row['ctubbgdis']) ?></div>
-                </div>
+        <?php foreach ($resource as $row) {?>
+        <div class="disciplina" id="<?php echo $row['sgldis'] ?>" style="content: none;">
+            <div>
+                <a href class="detalhes_btn"><?php echo $row['sgldis'] ?> - <?php echo $row['nomdis'] ?></a>
             </div>
-            <?php }?>
-
+            <div class="detalhes_div" style="display:none;">
+                <div><b>Créditos </b> <br><?php echo $row['numcretotdis'] ?></div>
+                <div><b>Objetivos</b><br><?php echo nl2br($row['objdis']) ?></div>
+                <div><b>Justificativa</b><br><?php echo nl2br($row['jusdis']) ?></div>
+                <div><b>Conteúdo</b><br><?php echo nl2br($row['ctudis']) ?></div>
+                <div><b>Forma de avaliação</b><br><?php echo $row['tipavldis'] ?></div>
+                <div><b>Observação</b><br><?php echo nl2br($row['obsdis']) ?></div>
+                <div><b>Bibliografia</b><br><?php echo nl2br($row['ctubbgdis']) ?></div>
+            </div>
+        </div>
+        <?php }?>
     </div>
 
 <?php } ?>

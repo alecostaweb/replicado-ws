@@ -1,9 +1,14 @@
 <!-- O jquery é necessário para testar aqui mas dentro do WP ele já está carregado -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <br><br><br><br>
+<?php
+// vamos carregar $srv, $codare
+require_once '../credentials.php';
+?>
+
 
 <?php
-/* este código permite consumir as disciplinas em oferecimento de determinada área de concentração da pós
+/* este código permite consumir o catálogo de disciplinas de determinada área de concentração da pós
  * e colocar o conteúdo numa página do wordpress
  * foi testado usando o plugin PHP Everywhere do Wordpress 5.2.2
  * os dados do webservice vem em json.
@@ -17,16 +22,19 @@
  * 13/9/2019
  */
 
-$codare = '18134'; // eng estruturas
+//$srv = 'http://api.eesc.usp.br/replicado';
+//$codare = 18134;
 $sort = ''; // default: nomdis - que vem do endpoint. Coloque o nome do campo que quiser ordenar. ex. sgldis
 $offset = 100; // offset ao rolar para cima por conta do menu fixo utilizado no template. Sem menu fixo o offset é 0
 
-// producao ou testes
-$endpoint = 'http://servidor/replicado/posgraduacao/catalogodisciplinas/' . $codare . '?l=completo';
-
 // ------------------------------------------------
 
-$json = file_get_contents($endpoint);
+$endpoint = $srv.'/posgraduacao/catalogodisciplinas/' . $codare . '?l=completo';
+
+if (!($json = file_get_contents($endpoint))) {
+    echo 'Erro ao ler ' . $srv; exit;
+}
+
 $resource = json_decode($json, true);
 
 if ($sort) {
@@ -37,49 +45,23 @@ if ($sort) {
 }
 
 $num_rows = count($resource);
-
-function ministrante($ministrante) {
-    $ret = '';
-    foreach($ministrante as $m) {
-        $ret .= $m['nompes'].'<br>';
-    }
-    $ret = substr($ret,0, -4);
-    return $ret;
-}
-
-function horariolocal($espacoturma) {
-    $ret = '';
-    foreach($espacoturma as $e) {
-        $ret .= $e['diasmnofe'].', '.$e['horiniofe'].' - '.$e['horfimofe'].', '.$e['locofe'].'<br>';
-    }
-    $ret = substr($ret,0, -4);
-    return $ret;
-}
-
 ?>
-<div class="oferecimentos">
-    <div class="count">Disciplinas em oferecimento (<?php echo $num_rows ?> disciplinas encontradas)</div>
+<div class="catalogo_disciplinas">
+    <div class="count">Foram encontradas <?php echo $num_rows ?> disciplinas.</div>
     <ul>
         <?php foreach ($resource as $row) {?>
-        <li id="oferecimentos<?php echo $row['sgldis'] ?>">
+        <li id="<?php echo $row['sgldis'] ?>">
             <div>
                 <a href class="detalhes_btn"><?php echo $row['sgldis'] ?> - <?php echo $row['nomdis'] ?></a>
             </div>
             <div class="detalhes_div" style="display:none;">
-
-                <div><b>Número de vagas</b><br>
-                <b>Alunos regulares</b>: <?php echo $row['numvagofe'] ?> &nbsp;
-                <b>Alunos especiais</b>: <?php echo $row['numvagespofe'] ?> &nbsp;
-                <b>Total</b>: <?php echo $row['numvagofetot'] ?></div>
-
-                <div><b>Número mínimo de alunos</b>: <?php echo $row['numminins'] ?></div>
-                <div><b>Data inicial</b>: <?php echo $row['dtainiofe'] ?> &nbsp; <b>Data final</b>: <?php echo nl2br($row['dtafimofe']) ?></div>
-                <div><b>Data limite de cancelamento</b>: <?php echo $row['dtalimcan'] ?></div>
-                <div><b>Número de créditos</b>: <?php echo $row['numcretotdis'] ?></div>
-                <div><b>Docente(s) ministrante(s)</b><br><?php echo ministrante($row['ministrante']) ?></div>
-                <div><b>Horário/Local</b><br><?php echo horariolocal($row['espacoturma']) ?></div>
-                <div><b>Critério de seleção</b><br><?php echo nl2br($row['criselofe']) ?></div>
-                <div><b>Idioma</b>: <?php echo nl2br($row['codlinofe']) ?></div>
+                <div><b>Créditos </b> <br><?php echo $row['numcretotdis'] ?></div>
+                <div><b>Objetivos</b><br><?php echo nl2br($row['objdis']) ?></div>
+                <div><b>Justificativa</b><br><?php echo nl2br($row['jusdis']) ?></div>
+                <div><b>Conteúdo</b><br><?php echo nl2br($row['ctudis']) ?></div>
+                <div><b>Forma de avaliação</b><br><?php echo $row['tipavldis'] ?></div>
+                <div><b>Observação</b><br><?php echo nl2br($row['obsdis']) ?></div>
+                <div><b>Bibliografia</b><br><?php echo nl2br($row['ctubbgdis']) ?></div>
             </div>
         </li>
         <?php }?>
@@ -88,24 +70,24 @@ function horariolocal($espacoturma) {
 
 <style>
 /* aumentando um pouco o tamanho da fonte */
-.oferecimentos {
+.catalogo_disciplinas {
     font-size: 14px;
 }
 
-.oferecimentos ul,
+.catalogo_disciplinas ul,
 li {
     list-style-type: none;
     padding: 0;
 }
 
 /* ajustando a cor da linha da disciplina */
-.oferecimentos a {
+.catalogo_disciplinas a {
     color: black;
     text-decoration: none;
 }
 
-/* acrescentando um espaço entre os elementos dos detalhes e edentando um pouco o detalhamento */
-.oferecimentos .detalhes_div div {
+/* acrescentando um espaço entre os elementos dos detalhes e edentando um pouco o detalhamento das disciplinas */
+.catalogo_disciplinas .detalhes_div div {
     padding: 4px;
     padding-left: 8px;
 }
@@ -116,7 +98,7 @@ $(document).ready(function() {
     // ao clicar na disciplina ele esconde os detalhes de outra disciplina e
     // mostra os detalhes da qual clicou. Clicando novamente ele esconde tudo.
     var offset = <?php echo $offset; ?>;
-    $(".oferecimentos .detalhes_btn").click(function(e) {
+    $(".catalogo_disciplinas .detalhes_btn").click(function(e) {
         e.preventDefault();
         var app = $(this).parent().parent();
         var detalhes = app.find(".detalhes_div");

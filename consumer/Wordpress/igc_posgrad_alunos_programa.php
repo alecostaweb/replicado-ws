@@ -1,12 +1,17 @@
 <?php
+// vamos carregar DOMINIO, $codcur
+require_once '../credentials.php';
+?>
 
+
+<?php
 /**
  * Retorna os alunos do programa de pós-graduação (codcur) dentro de suas áreas de atuação (codare)
+ * Site: https://github.com/uspdev/replicado-ws
  */
 
-$codcur = filter_input(INPUT_GET, 'codcur', FILTER_VALIDATE_INT);
-//$codcur = 44005;
-define("DOMINIO", "http://dev.igc.usp.br/replicado-ws/www"); 
+//$codcur = filter_input(INPUT_GET, 'codcur', FILTER_VALIDATE_INT);
+//define("DOMINIO", "http://dev.igc.usp.br/replicado-ws/www"); 
 
 // obtém dados do programa
 $endpoint = DOMINIO . '/posgraduacao/programas/' . $codcur;
