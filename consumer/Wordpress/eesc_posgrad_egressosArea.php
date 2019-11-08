@@ -59,7 +59,9 @@ function nivel($nivpgm)
 </style>
 <div class="alunos_egressos">
 
-    <table class="table" style="table-layout:auto;">
+    <input type="text" id="myTableFilterInput" onkeyup="myTableFilter()" placeholder="Filtrar ..">
+
+    <table class="table" id="myTableFilter" style="table-layout:auto;">
         <tr>
             <th>Nome</th>
             <th>Nível</th>
@@ -74,3 +76,13 @@ function nivel($nivpgm)
         <?php }?>
     </table>
 </div>
+
+<script type="text/javascript">
+// https://stackoverflow.com/questions/51187477/how-to-filter-a-html-table-using-simple-javascript
+
+function myTableFilter() {
+  const filter = document.querySelector('#myTableFilterInput').value.toUpperCase();
+  const trs = document.querySelectorAll('#myTableFilter tr:not(.header)');
+  trs.forEach(tr => tr.style.display = [...tr.children].find(td => td.innerHTML.toUpperCase().includes(filter)) ? '' : 'none');
+}
+</script>
