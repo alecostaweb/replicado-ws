@@ -2,7 +2,7 @@
 require_once '../config/config.php';
 require_once '../vendor/autoload.php';
 
-// aqui tem várias personalizações do Flight e outras configurqações
+// aqui tem várias personalizações do Flight e outras configurações
 require_once '../app/bootstrap.php';
 
 use Uspdev\Replicado_ws\Auth;
