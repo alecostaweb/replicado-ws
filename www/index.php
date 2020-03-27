@@ -14,6 +14,7 @@ $c = new Cache();
 
 // na raiz vamos colocar a documentação
 Flight::route('/', function () {
+    $api['graduacao_url'] = DOMINIO . '/graduacao';
     $api['posgraduacao_url'] = DOMINIO . '/posgraduacao';
     $api['pessoa_url'] = DOMINIO . '/pessoa';
     $api['bempatrimoniado_url'] = DOMINIO . '/bempatrimoniado';
