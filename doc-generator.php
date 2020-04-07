@@ -5,7 +5,8 @@ require_once __DIR__ . '/config/config.php';
 $endpoints = [
     '/posgraduacao',
     '/pessoa',
-    '/bempatrimoniado'
+    '/bempatrimoniado',
+    '/lattes'
 ];
 
 echo 'Gerador ed documentação dos endpoints. Deve ser rodado toda vez que os endpoints são modificados!'.PHP_EOL;

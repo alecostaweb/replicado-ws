@@ -51,10 +51,21 @@ foreach ($areas[$codcur] as $area) {
                 <th>Validade</th>
             </tr>
             <?php foreach ($resource as $row) {?>
+            
+            <?php
+            // get idLattes
+            $endpoint = DOMINIO . '/lattes/idLattes/' . $row['codpes']; 
+            $json = file_get_contents($endpoint);
+            $resLattes = json_decode($json, true);
+            $linkLattes = "http://lattes.cnpq.br/" . $resLattes['idLattes']; 
+            ?>
+            
+            
             <tr>
                 <td><?php echo  $row['nompes'] ?></td>
                 <td class="orientador_nivel"><?php echo  $row['nivare'] ?></td>
                 <td class="orientador_validade"><?php echo  date('d/m/Y', strtotime($row['dtavalfim'])) ?></td>
+                <td class="link_lattes"><a href="<?php echo $linkLattes; ?>" target="_blank">Lattes</a></td>
             </tr>
             <?php }?>
         </table>

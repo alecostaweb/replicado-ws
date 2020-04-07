@@ -1,7 +1,7 @@
 ## Endpoints
 
 Este documento foi gerado automaticamente a partir da documentação de cada endpoint.\
-Data da geração: 15/10/2019 04:38:03
+Data da geração: 07/04/2020 08:45:51
 
 ### /posgraduacao
 
@@ -34,9 +34,16 @@ Data da geração: 15/10/2019 04:38:03
     * descricao: retorna todos os funcionários ativos na unidade
   * /estagiarios
     * descricao: retorna todos os estagiários ativos na unidade
+  * /email/{codpes}
+    * descricao: recebe codpes e retorna o e-mail principal de uma Pessoa
 
 ### /bempatrimoniado
 
   * /dump/{numpat}
     * descricao: retorna todos campos da tabela bempatrimoniado
+
+### /lattes
+
+  * /idLattes/{codpes}
+    * descricao: retorna o idLattes de uma pessoa (codpes)
 

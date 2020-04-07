@@ -48,10 +48,20 @@ foreach ($areas[$codcur] as $area){
                     continue;
                 }
                 ?>
+            
+            <?php
+            // get idLattes
+            $endpoint = DOMINIO . '/lattes/idLattes/' . $row['codpes']; 
+            $json = file_get_contents($endpoint);
+            $resLattes = json_decode($json, true);
+            $linkLattes = "http://lattes.cnpq.br/" . $resLattes['idLattes']; 
+            ?>
+            
             <tr>
                 <td><?php echo  $row['nivpgm'] ?></td>
                 <td><?php echo  $row['nompes'] ?></td>
                 <td><?php echo  $row['codema'] ?></td>
+                <td><?php echo "<a href=$linkLattes>lattes</a>"; ?></td>
             </tr>
             <?php } ?>
         </table>
