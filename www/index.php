@@ -17,6 +17,7 @@ Flight::route('/', function () {
     $api['graduacao_url'] = DOMINIO . '/graduacao';
     $api['posgraduacao_url'] = DOMINIO . '/posgraduacao';
     $api['pessoa_url'] = DOMINIO . '/pessoa';
+    $api['lattes_url'] = DOMINIO . '/lattes';
     $api['bempatrimoniado_url'] = DOMINIO . '/bempatrimoniado';
     $api['login_url'] = DOMINIO . '/login';
     $api['logout_url'] = DOMINIO . '/logout';
