@@ -6,6 +6,16 @@
 Flight::request()->base = parse_url(DOMINIO, PHP_URL_PATH);
 Flight::request()->url = str_replace(Flight::request()->base, '', Flight::request()->url);
 
+function recursive_unset(&$array, $unwanted_key)
+{
+    unset($array[$unwanted_key]);
+    foreach ($array as &$value) {
+        if (is_array($value)) {
+            recursive_unset($value, $unwanted_key);
+        }
+    }
+}
+
 // vamos imprimir saída no formato texto
 Flight::map('text', function (array $array_rows) {
     foreach ($array_rows as $k => $v) {
@@ -16,6 +26,9 @@ Flight::map('text', function (array $array_rows) {
 
 // vamos imprimir o json formatado para humanos lerem
 Flight::map('jsonf', function ($data) {
+    if (is_array($data)) {
+        recursive_unset($data, 'timestamp');
+    }
     Flight::json($data, 200, true, 'utf-8', JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
 });
 
