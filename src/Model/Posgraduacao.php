@@ -43,13 +43,13 @@ class Posgraduacao
 
         for ($i = 0; $i < count($disciplinas); $i++) {
             #vamos remover timestamps que dá problema em json
-            unset($disciplinas[$i]['timestamp']);
             $sgldis = $disciplinas[$i]['sgldis'];
             $numofe = $disciplinas[$i]['numofe'];
             $oferecimento = UspdevPosgraduacao::oferecimento($sgldis, $numofe);
+            unset($oferecimento['timestamp']);
+            unset($oferecimento['espacoturma'][0]['timestamp']);
             $disciplinas[$i] = array_merge($disciplinas[$i], $oferecimento);
         }
-        print_r($disciplinas);exit;
         return $disciplinas;
     }
 }
