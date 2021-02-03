@@ -42,6 +42,8 @@ class Posgraduacao
         }
 
         for ($i = 0; $i < count($disciplinas); $i++) {
+            #vamos remover timestamps que dá problema em json
+            unset($disciplinas[$i]['timestamp']);
             $sgldis = $disciplinas[$i]['sgldis'];
             $numofe = $disciplinas[$i]['numofe'];
             $oferecimento = UspdevPosgraduacao::oferecimento($sgldis, $numofe);
