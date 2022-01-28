@@ -9,5 +9,4 @@ consumer/credentials.php
 # pode colocar logs nessa pasta
 /local/
 
-composer.lock
 /nbproject
