@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5d925d23ff4e553d26b684c2a2d449d6",
+    "content-hash": "22295ac05a0f9c3ba356ddbadcd0ff74",
     "packages": [
         {
             "name": "doctrine/inflector",
-            "version": "2.1.x-dev",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "3249de584daab089c823ddc3f8efb108cee85a10"
+                "reference": "8b7ff3e4b7de6b2c84da85637b59fd2880ecaa89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/3249de584daab089c823ddc3f8efb108cee85a10",
-                "reference": "3249de584daab089c823ddc3f8efb108cee85a10",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/8b7ff3e4b7de6b2c84da85637b59fd2880ecaa89",
+                "reference": "8b7ff3e4b7de6b2c84da85637b59fd2880ecaa89",
                 "shasum": ""
             },
             "require": {
@@ -79,7 +79,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/inflector/issues",
-                "source": "https://github.com/doctrine/inflector/tree/2.1.x"
+                "source": "https://github.com/doctrine/inflector/tree/2.0.4"
             },
             "funding": [
                 {
@@ -95,11 +95,11 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-10-22T20:33:24+00:00"
+            "time": "2021-10-22T20:16:43+00:00"
         },
         {
             "name": "illuminate/collections",
-            "version": "8.x-dev",
+            "version": "v8.81.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -153,7 +153,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "8.x-dev",
+            "version": "v8.81.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -201,7 +201,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "8.x-dev",
+            "version": "v8.81.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -247,16 +247,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "8.x-dev",
+            "version": "v8.81.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "16f9259effd65a3e969ab2dc59edd3841d3d8c06"
+                "reference": "fb33fd4bbcc075f641d5576b700a1c3d962acef0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/16f9259effd65a3e969ab2dc59edd3841d3d8c06",
-                "reference": "16f9259effd65a3e969ab2dc59edd3841d3d8c06",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/fb33fd4bbcc075f641d5576b700a1c3d962acef0",
+                "reference": "fb33fd4bbcc075f641d5576b700a1c3d962acef0",
                 "shasum": ""
             },
             "require": {
@@ -311,20 +311,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-01-27T22:23:51+00:00"
+            "time": "2022-01-25T16:10:28+00:00"
         },
         {
             "name": "mikecao/flight",
-            "version": "v1.x-dev",
+            "version": "v1.3.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mikecao/flight.git",
-                "reference": "ca155d539435120fda5a7067c82ab91f1e9f1078"
+                "reference": "bc5e03ca59accb3ef37e31b6d4a2a9c78c7bb7ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikecao/flight/zipball/ca155d539435120fda5a7067c82ab91f1e9f1078",
-                "reference": "ca155d539435120fda5a7067c82ab91f1e9f1078",
+                "url": "https://api.github.com/repos/mikecao/flight/zipball/bc5e03ca59accb3ef37e31b6d4a2a9c78c7bb7ce",
+                "reference": "bc5e03ca59accb3ef37e31b6d4a2a9c78c7bb7ce",
                 "shasum": ""
             },
             "require": {
@@ -356,22 +356,22 @@
             "homepage": "http://flightphp.com",
             "support": {
                 "issues": "https://github.com/mikecao/flight/issues",
-                "source": "https://github.com/mikecao/flight/tree/v1"
+                "source": "https://github.com/mikecao/flight/tree/v1.3.9"
             },
-            "time": "2021-04-24T03:44:21+00:00"
+            "time": "2021-04-05T01:36:59+00:00"
         },
         {
             "name": "monolog/monolog",
-            "version": "dev-main",
+            "version": "2.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "fb2c324c17941ffe805aa7c953895af96840d0c9"
+                "reference": "fd4380d6fc37626e2f799f29d91195040137eba9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/fb2c324c17941ffe805aa7c953895af96840d0c9",
-                "reference": "fb2c324c17941ffe805aa7c953895af96840d0c9",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/fd4380d6fc37626e2f799f29d91195040137eba9",
+                "reference": "fd4380d6fc37626e2f799f29d91195040137eba9",
                 "shasum": ""
             },
             "require": {
@@ -414,7 +414,6 @@
                 "rollbar/rollbar": "Allow sending log messages to Rollbar",
                 "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -446,7 +445,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Seldaek/monolog/issues",
-                "source": "https://github.com/Seldaek/monolog/tree/main"
+                "source": "https://github.com/Seldaek/monolog/tree/2.3.5"
             },
             "funding": [
                 {
@@ -458,11 +457,11 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-15T08:08:41+00:00"
+            "time": "2021-10-01T21:08:31+00:00"
         },
         {
             "name": "nesbot/carbon",
-            "version": "dev-master",
+            "version": "2.56.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
@@ -492,7 +491,6 @@
                 "phpunit/phpunit": "^7.5.20 || ^8.5.14",
                 "squizlabs/php_codesniffer": "^3.4"
             },
-            "default-branch": true,
             "bin": [
                 "bin/carbon"
             ],
@@ -559,7 +557,7 @@
         },
         {
             "name": "psr/container",
-            "version": "1.x-dev",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/container.git",
@@ -708,7 +706,7 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "2.5.x-dev",
+            "version": "v2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
@@ -755,7 +753,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/main"
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v2.5.0"
             },
             "funding": [
                 {
@@ -941,7 +939,7 @@
         },
         {
             "name": "symfony/translation",
-            "version": "5.4.x-dev",
+            "version": "v5.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
@@ -989,7 +987,6 @@
                 "symfony/config": "",
                 "symfony/yaml": ""
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "files": [
@@ -1039,7 +1036,7 @@
         },
         {
             "name": "symfony/translation-contracts",
-            "version": "2.5.x-dev",
+            "version": "v2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation-contracts.git",
@@ -1097,7 +1094,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/translation-contracts/tree/2.5"
+                "source": "https://github.com/symfony/translation-contracts/tree/v2.5.0"
             },
             "funding": [
                 {
@@ -1158,16 +1155,16 @@
         },
         {
             "name": "uspdev/replicado",
-            "version": "1.10.4",
+            "version": "1.10.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/uspdev/replicado.git",
-                "reference": "1a3cfc21e5d1ecde67e592c53bc78a0a040b1d40"
+                "reference": "719730fe596ff1adda0576547d073b86151d7c52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/uspdev/replicado/zipball/1a3cfc21e5d1ecde67e592c53bc78a0a040b1d40",
-                "reference": "1a3cfc21e5d1ecde67e592c53bc78a0a040b1d40",
+                "url": "https://api.github.com/repos/uspdev/replicado/zipball/719730fe596ff1adda0576547d073b86151d7c52",
+                "reference": "719730fe596ff1adda0576547d073b86151d7c52",
                 "shasum": ""
             },
             "require": {
@@ -1202,9 +1199,9 @@
             "homepage": "https://github.com/uspdev/replicado",
             "support": {
                 "issues": "https://github.com/uspdev/replicado/issues",
-                "source": "https://github.com/uspdev/replicado/tree/1.10.4"
+                "source": "https://github.com/uspdev/replicado/tree/1.10.5"
             },
-            "time": "2022-01-28T12:47:38+00:00"
+            "time": "2022-01-28T19:39:35+00:00"
         },
         {
             "name": "voku/portable-ascii",
@@ -1285,7 +1282,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": [],
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "ext-pdo": "*"
