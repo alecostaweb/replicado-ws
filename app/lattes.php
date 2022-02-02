@@ -13,6 +13,6 @@ $help['idLattes'] = [
     'descricao' => 'retorna o idLattes de uma pessoa (codpes)',
 ];
 Flight::route('/lattes/idLattes/@codpes:[0-9]+', function ($codpes) {
-    $res = Lattes::idLattes($codpes);
+    $res = Lattes::id($codpes);
     Flight::json($res);
 });

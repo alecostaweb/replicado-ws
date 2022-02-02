@@ -69,7 +69,7 @@ Flight::route('/posgraduacao/catalogodisciplinas/@codare:[0-9]+', function ($cod
 });
 
 // em uso no site da PG do SET, 9/2019
-$help['disciplinasativas'] = [
+$help['disciplinas_oferecimento'] = [
     'url' => DOMINIO . '/posgraduacao/disciplinas_oferecimento/{codare}',
     'descricao' => 'retorna as disciplinas em oferecimento na área de concentração (codare) do programa de pós graduação correspondente',
 ];

@@ -49,9 +49,8 @@ $help['docentes'] = [
     'descricao' => 'retorna todos os docentes ativos na unidade',
 ];
 Flight::route('/pessoa/docentes', function () {
-    global $c;
     Auth::auth();
-    $res = $c->getCached('\Uspdev\Replicado\Pessoa::docentes', UNIDADE);
+    $res = \Uspdev\Replicado\Pessoa::listarDocentes();
     Flight::json($res);
 });
 
@@ -99,4 +98,26 @@ Flight::route('/pessoa/email/@codpes:[0-9]+', function ($codpes) {
     Flight::jsonf($res);
 });
 
+$help['procura_ativo'] = [
+    'url' => DOMINIO . '/pessoa/procura_ativo/?q={codpes_nome}',
+    'descricao' => '(local) procura por nome ou número USP e retorna dados básicos. Implementado inicialmente no cartarecomendacao.',
+];
+Flight::route('/pessoa/procura_ativo/', function () {
+    global $c;
     
+    Auth::auth();
+    $q = Flight::request()->query['q'];
+    
+    if (empty($q)) {
+        return [];
+    }
+    
+    $res = \Uspdev\Replicado\Pessoa::procurarPorCodigoOuNome($q);
+    $rets = [];
+    foreach ($res as $pessoa) {
+        $email = \Uspdev\Replicado\Pessoa::email($pessoa['codpes']);
+        $ret = [$pessoa['codpes'], $pessoa['nompes'], $pessoa['sexpes'], $email];
+        $rets[] = $ret;
+    }
+    Flight::json($rets);
+});
