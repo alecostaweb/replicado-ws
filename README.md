@@ -14,6 +14,10 @@ Web Service para acesso aos dados do Replicado USP
 
 A API faz uso do uspdev/cache. Essa biblioteca de cache funciona com o memcached e ele precisa ser instalado e configurado. Para mais informações consulte http://github.com/uspdev/cache.
 
+## Updates
+
+2/2022 - deixou de usar a contante UNIDADE para usar a variável de ambiente REPLICADO_CODUNDCLG. Atualizeo arquivo de configuraçãoapropriadamente.
+
 ## Testes
 
 Há alguns testes simples de verificação do funcionamento. Longe de ser unit teste ou algo assim mas se rodar direitinho quer dizer que as configurações gerais estão corretas.

@@ -64,7 +64,7 @@ $help['servidores'] = [
 Flight::route('/pessoa/servidores', function () {
     global $c;
     Auth::auth();
-    $res = $c->getCached('\Uspdev\Replicado\Pessoa::servidores', UNIDADE);
+    $res = $c->getCached('\Uspdev\Replicado\Pessoa::servidores', getenv('REPLICADO_CODUNDCLG'));
     Flight::jsonf($res);
 });
 
@@ -78,7 +78,7 @@ $help['estagiarios'] = [
 Flight::route('/pessoa/estagiarios', function () {
     global $c;
     Auth::auth();
-    $res = $c->getCached('\Uspdev\Replicado\Pessoa::estagiarios', UNIDADE);
+    $res = $c->getCached('\Uspdev\Replicado\Pessoa::estagiarios', getenv('REPLICADO_CODUNDCLG'));
     Flight::jsonf($res);
 });
     

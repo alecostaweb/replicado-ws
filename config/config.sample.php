@@ -28,7 +28,7 @@ putenv('REPLICADO_PORT=1498');
 putenv('REPLICADO_DATABASE=rep_dbc');
 putenv('REPLICADO_USERNAME=dbmaint_read');
 putenv('REPLICADO_PASSWORD=secret');
-putenv('REPLICADO_CODUNDCLG='); // 18,90
+putenv('REPLICADO_CODUNDCLG='); // não pode ser uma lista de números
 putenv('REPLICADO_SYBASE=1');
 putenv('REPLICADO_PATHLOG=' . DIR . '/local/replicado.log'); // se não pusermos nada vai para default do replicado que é /tmp/log.log
 

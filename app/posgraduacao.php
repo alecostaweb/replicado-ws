@@ -14,7 +14,7 @@ $help['verifica'] = [
 ];
 Flight::route('/posgraduacao/verifica/@codpes:[0-9]+', function ($codpes) {
     Auth::auth();
-    $res = Posgraduacao::verifica($codpes, UNIDADE);
+    $res = Posgraduacao::verifica($codpes, getenv('REPLICADO_CODUNDCLG'));
     Flight::json($res);
 });
 
@@ -25,7 +25,7 @@ $help['ativos'] = [
 Flight::route('/posgraduacao/ativos', function () {
     global $c;
     Auth::auth();
-    $res = $c->getCached('\Uspdev\Replicado\Posgraduacao::ativos', UNIDADE);
+    $res = $c->getCached('\Uspdev\Replicado\Posgraduacao::ativos', getenv('REPLICADO_CODUNDCLG'));
     Flight::json($res);
 });
 
@@ -35,7 +35,7 @@ $help['programas'] = [
 ];
 Flight::route('/posgraduacao/programas(/@codcur:[0-9]+)', function ($codcur) {
     global $c;
-    $res = Posgraduacao::programas(UNIDADE, $codcur);
+    $res = Posgraduacao::programas(getenv('REPLICADO_CODUNDCLG'), $codcur);
     Flight::json($res);
 });
 
@@ -92,7 +92,7 @@ $help['areasProgramas'] = [
     'descricao' => 'retorna áreas de concentração (codare) do programa de pós-graduação correspondente (codcur)',
 ];
 Flight::route('/posgraduacao/areasProgramas/@codcur:[0-9]+', function ($codcur) {
-    $res = Posgraduacao::areasProgramas(UNIDADE, $codcur);
+    $res = Posgraduacao::areasProgramas(getenv('REPLICADO_CODUNDCLG'), $codcur);
     Flight::json($res);
 });
 
@@ -102,6 +102,6 @@ $help['alunosPrograma'] = [
     'descricao' => 'retorna os alunos ativos das áreas de concentração (codare) do programa de pós-graduação correspondente (codcur)',
 ];
 Flight::route('/posgraduacao/alunosPrograma/@codcur:[0-9]+', function ($codcur) {
-    $res = Posgraduacao::alunosPrograma(UNIDADE, $codcur);
+    $res = Posgraduacao::alunosPrograma(getenv('REPLICADO_CODUNDCLG'), $codcur);
     Flight::json($res);
 });
