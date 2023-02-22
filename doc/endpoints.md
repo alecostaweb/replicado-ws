@@ -1,7 +1,7 @@
 ## Endpoints
 
 Este documento foi gerado automaticamente a partir da documentação de cada endpoint.\
-Data da geração: 07/04/2020 08:45:51
+Data da geração: 22/02/2023 03:58:34
 
 ### /posgraduacao
 
@@ -36,6 +36,10 @@ Data da geração: 07/04/2020 08:45:51
     * descricao: retorna todos os estagiários ativos na unidade
   * /email/{codpes}
     * descricao: recebe codpes e retorna o e-mail principal de uma Pessoa
+  * /procura_ativo/?q={codpes_nome}
+    * descricao: (local) procura por nome ou número USP e retorna dados básicos. Implementado inicialmente no cartarecomendacao.
+  * /aposentados/docentes
+    * descricao: retorna todos os docentes aposentados seniores da unidade.
 
 ### /bempatrimoniado
 

@@ -121,3 +121,16 @@ Flight::route('/pessoa/procura_ativo/', function () {
     }
     Flight::json($rets);
 });
+
+/**
+ * Docentes aposentados da unidade
+ */
+$help['aposentados_docentes'] = [
+    'url' => DOMINIO . '/pessoa/aposentados/docentes',
+    'descricao' => 'retorna todos os docentes aposentados seniores da unidade.'
+];
+Flight::route('/pessoa/aposentados/docentes', function (){
+    Auth::auth();
+    $res = \Uspdev\Replicado\Pessoa::listarDocentesAposentadosSenior();
+    Flight::json($res);
+});
