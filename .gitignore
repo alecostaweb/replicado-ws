@@ -10,3 +10,8 @@ consumer/credentials.php
 /local/
 
 /nbproject
+
+# lando + docker
+.lando.yml
+php.ini
+Dockerfile.custom
