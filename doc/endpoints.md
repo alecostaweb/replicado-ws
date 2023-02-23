@@ -1,7 +1,7 @@
 ## Endpoints
 
 Este documento foi gerado automaticamente a partir da documentação de cada endpoint.\
-Data da geração: 22/02/2023 03:58:34
+Data da geração: 23/02/2023 01:54:27
 
 ### /posgraduacao
 
@@ -38,7 +38,7 @@ Data da geração: 22/02/2023 03:58:34
     * descricao: recebe codpes e retorna o e-mail principal de uma Pessoa
   * /procura_ativo/?q={codpes_nome}
     * descricao: (local) procura por nome ou número USP e retorna dados básicos. Implementado inicialmente no cartarecomendacao.
-  * /aposentados/docentes
+  * /docentes/seniores
     * descricao: retorna todos os docentes aposentados seniores da unidade.
 
 ### /bempatrimoniado
