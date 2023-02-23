@@ -125,7 +125,7 @@ Flight::route('/pessoa/procura_ativo/', function () {
 /**
  * Docentes aposentados da unidade
  */
-$help['docentes_aposentados'] = [
+$help['docentes_seniores'] = [
     'url' => DOMINIO . '/pessoa/docentes/seniores',
     'descricao' => 'retorna todos os docentes aposentados seniores da unidade.'
 ];
