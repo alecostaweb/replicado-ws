@@ -123,7 +123,7 @@ Flight::route('/pessoa/procura_ativo/', function () {
 });
 
 /**
- * Docentes aposentados da unidade
+ * Docentes aposentados seniores da unidade
  */
 $help['docentes_seniores'] = [
     'url' => DOMINIO . '/pessoa/docentes/seniores',

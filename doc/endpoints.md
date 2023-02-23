@@ -1,7 +1,7 @@
 ## Endpoints
 
 Este documento foi gerado automaticamente a partir da documentação de cada endpoint.\
-Data da geração: 23/02/2023 01:54:27
+Data da geração: 23/02/2023 04:03:08
 
 ### /posgraduacao
 
